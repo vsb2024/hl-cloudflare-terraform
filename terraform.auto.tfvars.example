@@ -1,0 +1,17 @@
+# Cloudflare Configuration
+# Copy this file to terraform.auto.tfvars and fill in your values
+# terraform.auto.tfvars is in .gitignore for security
+
+cloudflare_email   = "your-email@example.com"
+cloudflare_api_key = "your-global-api-key"
+cloudflare_zone_id = "your-zone-id"
+
+# Load Balancer hostname from EKS nginx-ingress
+# Get this from: kubectl get svc -n ingress-nginx nginx-ingress-ingress-nginx-controller -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
+load_balancer_hostname = "your-elb-hostname.us-east-1.elb.amazonaws.com"
+
+# Optional settings
+subdomain              = "cball"
+cloudflare_proxied     = true
+create_www_subdomain   = false
+ssl_mode              = "flexible"
