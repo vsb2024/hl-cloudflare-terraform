@@ -22,9 +22,9 @@ This repository contains Terraform configuration to set up Cloudflare DNS for th
 The credentials are already configured in `terraform.auto.tfvars` (excluded from git):
 
 ```hcl
-cloudflare_email   = "mediafactoryhosting@gmail.com"
-cloudflare_api_key = "44f0c7699ae490feb78793fbefd31819d9179"
-cloudflare_zone_id = "e6e933f342a6bd502f2d0c38098da594"
+cloudflare_email   = "@gmail.com"
+cloudflare_api_key = ""
+cloudflare_zone_id = ""
 ```
 
 ⚠️ **Security Note**: The `terraform.auto.tfvars` file is in `.gitignore` to prevent committing sensitive credentials to git.
