@@ -10,8 +10,8 @@ terraform {
 }
 
 provider "cloudflare" {
-  api_token = var.cloudflare_api_key
-  email     = var.cloudflare_email
+  api_key = var.cloudflare_api_key
+  email   = var.cloudflare_email
 }
 
 # Get the zone information
@@ -25,7 +25,7 @@ resource "cloudflare_record" "game" {
   name    = var.subdomain
   content = var.load_balancer_hostname
   type    = "CNAME"
-  ttl     = 300
+  ttl     = var.cloudflare_proxied ? 1 : 300
   proxied = var.cloudflare_proxied
 
   comment = "Halloween Candy Rush game - EKS Load Balancer"
@@ -57,9 +57,6 @@ resource "cloudflare_zone_settings_override" "game_zone_settings" {
 
     # Minimum TLS version
     min_tls_version = "1.2"
-
-    # Enable HTTP/2
-    http2 = "on"
 
     # Enable HTTP/3
     http3 = "on"
